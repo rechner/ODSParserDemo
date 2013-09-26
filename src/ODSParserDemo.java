@@ -1,3 +1,21 @@
+/* 
+ * Copyleft 2013 Zachary Sturgeon.  You may use the following code with or
+ * without attribution.
+ * 
+ *  Demo of the jOpenDocument parser for use in Assignment 2.
+ * If you have trouble getting this working in eclipse, remember to
+ * right click on lib/jOpenDocument-1.3.jar in your package explorer and select
+ * Build Path > Add to Build Path.  If you're using a different IDE or the CLI,
+ * try using the -classpath lib/ argument.
+ * 
+ *  Unlike the HSSF parser on CSC202's github (which works only with 1997-2007
+ * Microsloth office binary formats), this parser works with the
+ * ODF file format, which is a free and unencumbered document format.
+ * 
+ *  Included is example code which can be used to make a ODF spreadsheet 
+ *  processing class by a few means.
+ */
+
 import java.io.File;
 import java.io.IOException;
 import java.text.NumberFormat;
@@ -6,9 +24,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.jopendocument.dom.spreadsheet.*;
-
-
+import org.jopendocument.dom.spreadsheet.Sheet;
+import org.jopendocument.dom.spreadsheet.SpreadSheet;
 
 public class ODSParserDemo {
 	
@@ -22,8 +39,6 @@ public class ODSParserDemo {
 		//Similar to the HSSF demo, we can read in everything into lists of
 		//lists, but it'd be better to abstract everything from here while
 		//the file is being read so exceptions can be handled.
-		
-		List columns = new ArrayList();
 		
 		try {
 			File f = new File(filename);
